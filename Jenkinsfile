@@ -24,5 +24,15 @@ pipeline {
                 }
             }
         }
+        stage ('Test'){
+            steps {
+                sh 'mvn test'
+            }
+        }
+        stage ('Deploy'){
+            steps{
+                sh 'java -jar target/product-app-0.0.1-SNAPSHOT.jar'
+            }
+        }
     }
 }
