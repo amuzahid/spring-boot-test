@@ -31,7 +31,10 @@ pipeline {
         }
         stage ('Deploy'){
             steps{
-                sh 'java -jar target/product-app-0.0.1-SNAPSHOT.jar'
+                sh '''
+                    docker rm -f myjob
+                    docker run -d --name myjob -p 9999:8090 product
+                '''
             }
         }
     }
