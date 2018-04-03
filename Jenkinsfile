@@ -26,7 +26,7 @@ pipeline {
         }
         stage ('Test'){
             steps {
-                sh 'mvn test'
+                sh 'mvn test sonar:sonar -Dsonar.host.url=http://192.168.8.100:9000 -Dsonar.login=spring'
             }
         }
         stage ('Deploy'){
