@@ -22,7 +22,7 @@ public class ProductAppApplication {
             public String getProducts(Model model)
             {
                 model.addAttribute("products", Arrays.asList("product a", "product b", "product c"));
-                return "products";
+                return "Contoh Aplikasi";
             }
             
             @GetMapping(path = "/logout")
