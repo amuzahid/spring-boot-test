@@ -30,13 +30,11 @@ pipeline {
             }
         }
         stage ('Deploy'){
-            node {
-                try {
-                    sh 'ocker rm -f myjob'
-                } finally {
-                    sh 'docker run -d --name myjob -p 9999:8090 product'
-                    step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'achmad..com', sendToIndividuals: true])
-                }
+            steps{
+                sh '''
+                    docker rm -f myjob
+                    docker run -d --name myjob -p 9999:8090 product
+                '''
             }
         }
     }
