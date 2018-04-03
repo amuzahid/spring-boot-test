@@ -5,7 +5,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : MAVEN.3.5.3') {
                     sh 'mvn clean compile'
                 }
             }
@@ -14,16 +14,9 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                withMaven(maven : 'maven_3_5_0') {
+                withMaven(maven : 'MAVEN.3.5.3') {
                     sh 'mvn test'
                 }
-            }
-        }
-
-
-        stage ('Deployment Stage') {
-            steps {
-                java -jar target/product-app-0.0.1-SNAPSHOT.jar
             }
         }
     }
